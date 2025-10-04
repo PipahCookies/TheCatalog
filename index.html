@@ -274,13 +274,14 @@ Hai kami dari Pipah Cookies sudah beroperasi sejak 2020, Kami menjual produk bak
       <p><a class="btn secondary" href="#" onclick="window.open('https://wa.me/601121243407','_blank')">Chat di WhatsApp</a></p>
     </section>
 
-    <!-- 🎵 Elegant Floating Music Button with Gentle Intro -->
+    <!-- 🎵 Elegant Floating Music Button with Gentle Intro (Auto muted + resume + reminder) -->
 <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
 
-<audio id="bgmusic" loop>
+<audio id="bgmusic" loop muted autoplay>
   <source src="images/music.mp3" type="audio/mpeg">
 </audio>
-<!-- ⬇️ Tukar kedudukan: dari top-left ke bottom-left -->
+
+<!-- 🎶 Button at bottom-left -->
 <div id="musicWrapper" style="position:fixed; bottom:20px; left:20px; z-index:9999;">
   <button id="musicBtn" style="
     background-color: rgba(255, 255, 255, 0.2);
@@ -297,7 +298,7 @@ Hai kami dari Pipah Cookies sudah beroperasi sejak 2020, Kami menjual produk bak
   ">🎵</button>
   
   <span id="musicText" style="
-    color: ;
+    color: white;
     font-family: 'Dancing Script', cursive;
     font-size: 20px;
     margin-left: 14px;
@@ -307,8 +308,21 @@ Hai kami dari Pipah Cookies sudah beroperasi sejak 2020, Kami menjual produk bak
     position: relative;
     top: -2px;
     text-shadow: 0 2px 6px rgba(0,0,0,0.3);
-  ">Play if u Chilling</span>
+  ">Play if u Chilling...</span>
 </div>
+
+<style>
+@keyframes glowPulse {
+  0% { box-shadow: 0 0 10px rgba(255, 215, 0, 0.5); }
+  50% { box-shadow: 0 0 20px rgba(255, 215, 0, 0.9); }
+  100% { box-shadow: 0 0 10px rgba(255, 215, 0, 0.5); }
+}
+.playing {
+  animation: glowPulse 2s infinite;
+  background-color: rgba(255, 204, 0, 0.4);
+  border-color: rgba(255, 204, 0, 0.8);
+}
+</style>
 
   </main>
 
@@ -632,34 +646,64 @@ const btn = document.getElementById('musicBtn');
 const text = document.getElementById('musicText');
 let isPlaying = false;
 
-// 🌸 Animasi teks muncul dan hilang
-window.addEventListener('load', () => {
-  setTimeout(() => {
-    text.style.opacity = 1;
-    text.style.transform = 'translateX(0)';
-  }, 800); // muncul perlahan
+<script>
+const music = document.getElementById('bgmusic');
+const btn = document.getElementById('musicBtn');
+const text = document.getElementById('musicText');
+let isPlaying = true;
+let savedTime = 0;
+let reminderShown = false;
 
-  // Hilang perlahan selepas 5s
+// 🌸 Animasi teks muncul dan hilang
+function showText() {
+  text.style.opacity = 1;
+  text.style.transform = 'translateX(0)';
   setTimeout(() => {
     text.style.opacity = 0;
     text.style.transform = 'translateX(-25px)';
-  }, 5800);
+  }, 5000);
+}
+
+// 🌼 Auto play (muted)
+window.addEventListener('load', () => {
+  music.play().catch(() => {});
+  setTimeout(showText, 800);
 });
 
-// 🎵 Kawalan muzik
+// 🎵 Kawalan muzik dengan resume masa terakhir
 btn.addEventListener('click', () => {
-  if (!isPlaying) {
-    music.play();
-    isPlaying = true;
-    btn.innerHTML = '🍪';
-    btn.classList.add('playing');
-  } else {
+  if (isPlaying) {
+    savedTime = music.currentTime;
     music.pause();
     isPlaying = false;
     btn.innerHTML = '🎵';
     btn.classList.remove('playing');
+  } else {
+    music.currentTime = savedTime;
+    music.muted = false;
+    music.play();
+    isPlaying = true;
+    btn.innerHTML = '🍪';
+    btn.classList.add('playing');
   }
 });
+
+// 🕒 Reminder muncul selepas 1 minit
+setTimeout(() => {
+  if (!reminderShown) {
+    showText();
+    reminderShown = true;
+  }
+}, 60000); // 1 minit
+
+// 📜 Reminder muncul bila user scroll ke bawah
+window.addEventListener('scroll', () => {
+  if (!reminderShown && window.scrollY > 100) {
+    showText();
+    reminderShown = true;
+  }
+});
+</script>
   </script>
 </body>
 </html>
