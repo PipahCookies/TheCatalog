@@ -626,7 +626,7 @@ function sendOrder(){
   function saveCart(){ localStorage.setItem(STORAGE_KEY, JSON.stringify(cart)); }
   function escapeHtml(text){ return String(text).replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m])); }
 
-    <script>
+    
 const music = document.getElementById('bgmusic');
 const btn = document.getElementById('musicBtn');
 const text = document.getElementById('musicText');
@@ -660,7 +660,6 @@ btn.addEventListener('click', () => {
     btn.classList.remove('playing');
   }
 });
-</script>
   </script>
 </body>
 </html>
