@@ -279,7 +279,14 @@ Hai kami dari Pipah Cookies sudah beroperasi sejak 2020, Kami menjual produk bak
       <p><a class="btn secondary" href="#" onclick="window.open('https://wa.me/601121243407','_blank')">Chat di WhatsApp</a></p>
     </section>
           
-<!-- 🎵 Floating Music Button with Smart Color + Auto Hide -->
+
+
+
+  </main>
+
+  <!-- FLOATING CART ICON -->
+  <button id="cart-icon" aria-label="Troli" onclick="toggleCart()">
+    <span c<!-- 🎵 Floating Music Button with Smart Color + Auto Hide -->
 <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
 
 <audio id="bgmusic" loop muted>
@@ -294,7 +301,7 @@ Hai kami dari Pipah Cookies sudah beroperasi sejak 2020, Kami menjual produk bak
 <style>
 .music-btn {
   background-color: rgba(255, 255, 255, 0.25);
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(0px);
   border: 0px solid rgba(255, 255, 255, 0.5);
   border-radius: 50%;
   width: 55px;
@@ -342,43 +349,9 @@ Hai kami dari Pipah Cookies sudah beroperasi sejak 2020, Kami menjual produk bak
 .spinning {
   animation: spinDisk 6s linear infinite;
 }
+  
 </style>
-
-<script>
-const musicBtn = document.getElementById('musicBtn');
-const musicText = document.getElementById('musicText');
-const bgMusic = document.getElementById('bgmusic');
-let isPlaying = false;
-
-// Fade in text when hover
-musicBtn.addEventListener('mouseenter', () => {
-  musicText.style.opacity = '1';
-  musicText.style.transform = 'translateX(0)';
-});
-musicBtn.addEventListener('mouseleave', () => {
-  musicText.style.opacity = '0';
-  musicText.style.transform = 'translateX(-25px)';
-});
-
-// Toggle play/pause
-musicBtn.addEventListener('click', async () => {
-  if (isPlaying) {
-    bgMusic.pause();
-    musicBtn.classList.remove('playing', 'spinning');
-  } else {
-    try {
-      bgMusic.muted = false;
-      await bgMusic.play();
-      musicBtn.classList.add('playing', 'spinning');
-    } catch (e) {
-      console.log('Autoplay blocked until user interaction.');
-    }
-  }
-  isPlaying = !isPlaying;
-});
-</script>
-
-
+      
   </main>
 
   <!-- FLOATING CART ICON -->
@@ -386,7 +359,6 @@ musicBtn.addEventListener('click', async () => {
     <span class="icon">🛒</span>
     <span id="cart-badge" class="badge">0</span>
   </button>
-
   <!-- CART PANEL -->
   <aside id="cart-panel" class="cart-panel" aria-live="polite" aria-hidden="true">
     <div class="cart-header">
