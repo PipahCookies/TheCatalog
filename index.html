@@ -294,7 +294,7 @@ Hai kami dari Pipah Cookies sudah beroperasi sejak 2020, Kami menjual produk bak
 <style>
 .music-btn {
   background-color: rgba(255, 255, 255, 0.25);
-  backdrop-filter: blur(0px);
+  backdrop-filter: blur(10px);
   border: 0px solid rgba(255, 255, 255, 0.5);
   border-radius: 50%;
   width: 55px;
@@ -342,8 +342,41 @@ Hai kami dari Pipah Cookies sudah beroperasi sejak 2020, Kami menjual produk bak
 .spinning {
   animation: spinDisk 6s linear infinite;
 }
-  
 </style>
+
+<script>
+const musicBtn = document.getElementById('musicBtn');
+const musicText = document.getElementById('musicText');
+const bgMusic = document.getElementById('bgmusic');
+let isPlaying = false;
+
+// Fade in text when hover
+musicBtn.addEventListener('mouseenter', () => {
+  musicText.style.opacity = '1';
+  musicText.style.transform = 'translateX(0)';
+});
+musicBtn.addEventListener('mouseleave', () => {
+  musicText.style.opacity = '0';
+  musicText.style.transform = 'translateX(-25px)';
+});
+
+// Toggle play/pause
+musicBtn.addEventListener('click', async () => {
+  if (isPlaying) {
+    bgMusic.pause();
+    musicBtn.classList.remove('playing', 'spinning');
+  } else {
+    try {
+      bgMusic.muted = false;
+      await bgMusic.play();
+      musicBtn.classList.add('playing', 'spinning');
+    } catch (e) {
+      console.log('Autoplay blocked until user interaction.');
+    }
+  }
+  isPlaying = !isPlaying;
+});
+</script>
 
 
   </main>
