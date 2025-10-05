@@ -1,4 +1,5 @@
-<!doctype html>
+
+ <!doctype html>
 <html lang="ms">
 <head>
   <meta charset="utf-8" />
@@ -14,9 +15,7 @@
   <meta property="og:site_name" content="Pipah Cookies" />
 
   <!-- 🌟 Untuk Twitter / WhatsApp Preview -->
-  <meta name="twitter:card" content="summary_large_image" />
-
-  <!-- Fonts -->
+  <meta name="twitter:card" content="summary_large_image" /> <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Fredoka&display=swap" rel="stylesheet">
 
   <style>
@@ -56,11 +55,34 @@
   .section{padding:36px 18px}
   .lead{max-width:900px;margin:0 auto;color:var(--muted);line-height:1.5}
 
+/* 🔹 Product Section Layout */
+.products {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+/* 🔹 Product Card Fixed Size */
+.product-card {
+  width: 250px;       /* fixed width */
+  height: 350px;      /* fixed height */
+  background: #fff;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  overflow: hidden;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 /* Product grid */
   .product-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;max-width:1100px;margin:12px auto}
   .card{background:var(--card);border-radius:12px;padding:12px;box-shadow:0 12px 24px rgba(0,0,0,0.06);transition:transform .18s}
   .card:hover{transform:translateY(-8px)}
-  .product-img{width:100%;height:160px;object-fit:cover;border-radius:8px}
+  .product -img{width:100%;height:160px;object-fit:cover;border-radius:8px}
   .old-price{text-decoration:line-through;color:gray;font-size:14px;}
   .price{color:var(--primary-dark);font-weight:700;margin-bottom:6px}
 
@@ -165,9 +187,9 @@
       <div class="product-grid" id="product-grid">
         <!-- card 1 -->
         <article class="card product-card">
-          <img src="images/Prod1.jpg" alt="Seasalt Cookies(65pcs)" class="product-img">
+          <img src="images/Seasalt.jpg" alt="Seasalt Cookies(65pcs)" class="product-img">
           <h3>Seasalt Cookies(65pcs)</h3>
-          <p><span class="old-price">RM20</span> <span class="price">RM18</span></p>
+          <p><span class="old-price">RM20</span> <span class="price">RM17</span></p>
           <div class="qty-control">
             <button class="qty-btn" onclick="changeProductQty('p1', -1)">−</button>
             <input id="qty-p1" class="qty-input" type="number" readonly value="0" min="0">
@@ -178,9 +200,9 @@
 
         <!-- card 2 -->
         <article class="card product-card">
-          <img src="images/Prod2.jpg" alt="ChocHazelnut Button" class="product-img">
+          <img src="images/ChocHazelnut.jpg" alt="ChocHazelnut Button" class="product-img">
           <h3>ChocHazelnut Button(38pcs)</h3>
-          <p><span class="old-price">RM29</span> <span class="price">RM22</span></p>
+          <p><span class="old-price">RM29</span> <span class="price">RM21</span></p>
           <div class="qty-control">
             <button class="qty-btn" onclick="changeProductQty('p2', -1)">−</button>
             <input id="qty-p2" class="qty-input" type="number" readonly value="0" min="0">
@@ -193,7 +215,7 @@
         <article class="card product-card">
           <img src="images/Prod3.jpg" alt="Brownies Cookies" class="product-img">
           <h3>Brownies Cookies(70pcs)</h3>
-          <p><span class="old-price">RM25</span> <span class="price">RM20</span></p>
+          <p><span class="old-price">RM25</span> <span class="price">RM19</span></p>
           <div class="qty-control">
             <button class="qty-btn" onclick="changeProductQty('p3', -1)">−</button>
             <input id="qty-p3" class="qty-input" type="number" readonly value="0" min="0">
@@ -206,7 +228,7 @@
         <article class="card product-card">
           <img src="images/Prod4.jpg" alt="DarkChoc Cookies" class="product-img">
           <h3>DarkChoc Cookies(80pcs)</h3>
-          <p><span class="old-price">RM25</span> <span class="price">RM20</span></p>
+          <p><span class="old-price">RM25</span> <span class="price">RM19</span></p>
           <div class="qty-control">
             <button class="qty-btn" onclick="changeProductQty('p4', -1)">−</button>
             <input id="qty-p4" class="qty-input" type="number" readonly value="0" min="0">
@@ -239,10 +261,17 @@ Hai kami dari Pipah Cookies sudah beroperasi sejak 2020, Kami menjual produk bak
     <!-- TESTIMONIALS -->
     <section id="testimonials" class="section fade-up">
       <h2>Testimoni Pelanggan</h2>
-    
+      <div class="testimonials">
+        <blockquote>“Biskut paling sedap! Anak-anak saya suka sangat!, sekali serang habis” <cite>– Aina</cite></blockquote>
+        <blockquote>“Rangup di luar, lembut di dalam. Terbaik!” <cite>– Daniel</cite></blockquote>
+        <blockquote>“Rugi weh aritu aku beli satu je sejenis,serius sedap tak cukup rasa sebalang tu.” <cite>– Linda</cite></blockquote>
+      </div>
+    </section>
 
+    
     <!-- GALLERY -->
   
+</section>
     <section id="gallery" class="section fade-up">
       <h2>Galeri</h2>
       <div class="gallery-grid">
@@ -256,9 +285,11 @@ Hai kami dari Pipah Cookies sudah beroperasi sejak 2020, Kami menjual produk bak
         <img src="images/pic21.jpg" alt="Galeri 3">
         <img src="images/pic11.jpg" alt="Galeri 3">
         <img src="images/pic13.jpg" alt="Galeri 3">
+        
       </div>
     </section>
-      
+  
+
     <!-- FAQ -->
     <section id="faq" class="section fade-up">
       <h2>Soalan Lazim</h2>
@@ -278,15 +309,8 @@ Hai kami dari Pipah Cookies sudah beroperasi sejak 2020, Kami menjual produk bak
        <p><a class="link" href="https://www.instagram.com/hafifahakilah?igsh=em5zbXBkOWQwamp6&utm_source=qr">Insta@pipahcookies</a></p>
       <p><a class="btn secondary" href="#" onclick="window.open('https://wa.me/601121243407','_blank')">Chat di WhatsApp</a></p>
     </section>
-          
-
-
-
-  </main>
-
-  <!-- FLOATING CART ICON -->
-  <button id="cart-icon" aria-label="Troli" onclick="toggleCart()">
-    <span c<!-- 🎵 Floating Music Button with Smart Color + Auto Hide -->
+  
+<!-- 🎵 Floating Music Button with Smart Color + Auto Hide -->
 <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
 
 <audio id="bgmusic" loop muted>
@@ -351,7 +375,7 @@ Hai kami dari Pipah Cookies sudah beroperasi sejak 2020, Kami menjual produk bak
 }
   
 </style>
-      
+
   </main>
 
   <!-- FLOATING CART ICON -->
@@ -359,6 +383,7 @@ Hai kami dari Pipah Cookies sudah beroperasi sejak 2020, Kami menjual produk bak
     <span class="icon">🛒</span>
     <span id="cart-badge" class="badge">0</span>
   </button>
+
   <!-- CART PANEL -->
   <aside id="cart-panel" class="cart-panel" aria-live="polite" aria-hidden="true">
     <div class="cart-header">
@@ -390,6 +415,8 @@ Hai kami dari Pipah Cookies sudah beroperasi sejak 2020, Kami menjual produk bak
     <div class="cart-actions">
       <button class="btn primary" id="open-checkout" onclick="showCheckoutForm()">Teruskan ke Checkout</button>
     </div>
+    
+   
   </aside>
 
   <!-- ========== SCRIPT ========== -->
@@ -667,7 +694,7 @@ function sendOrder(){
   function saveCart(){ localStorage.setItem(STORAGE_KEY, JSON.stringify(cart)); }
   function escapeHtml(text){ return String(text).replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m])); }
 
-    
+
 const music = document.getElementById('bgmusic');
 const btn = document.getElementById('musicBtn');
 const text = document.getElementById('musicText');
@@ -775,6 +802,7 @@ btn.addEventListener('click', async () => {
     btn.classList.remove('playing', 'spinning');
   }
 });
+
 </script>
 </body>
 </html>
