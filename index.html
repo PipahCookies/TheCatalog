@@ -314,6 +314,81 @@ Hai kami dari Pipah Cookies sudah beroperasi sejak 2020, Kami menjual produk bak
 
         // Smooth center zoom-in animation
         requestAnimationFrame(() => {
+<!-- 💕 Elegant Modern Cute Lightbox for Pipah Cookies -->
+<style>
+  /* Lightbox Overlay (hidden by default) */
+  #imgModal {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.3s ease;
+  }
+
+  /* Image inside popup */
+  #imgModal img {
+    max-width: 90%;
+    max-height: 85vh;
+    border-radius: 20px;
+    box-shadow: 0 0 30px rgba(255, 192, 203, 0.4);
+    cursor: zoom-out;
+    opacity: 0;
+    transform: scale(0.8);
+    transition: transform 0.35s ease, opacity 0.35s ease;
+  }
+
+  /* Close button */
+  #closeBtn {
+    position: fixed;
+    top: 20px;
+    right: 30px;
+    font-size: 30px;
+    font-weight: bold;
+    color: #fff;
+    text-shadow: 0 0 10px rgba(255, 182, 193, 0.8);
+    cursor: pointer;
+    transition: 0.3s;
+    z-index: 1000;
+    display: none; /* hidden until image opens */
+  }
+
+  #closeBtn:hover {
+    color: #ffb6c1;
+    transform: scale(1.2);
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+</style>
+
+<!-- Popup Container -->
+<div id="imgModal">
+  <span id="closeBtn">✖</span>
+  <img id="modalImg" />
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const modal = document.getElementById("imgModal");
+    const modalImg = document.getElementById("modalImg");
+    const closeBtn = document.getElementById("closeBtn");
+
+    // ✅ Make all normal images clickable
+    document.querySelectorAll("img").forEach(img => {
+      img.style.cursor = "zoom-in";
+      img.addEventListener("click", () => {
+        modal.style.display = "flex";
+        closeBtn.style.display = "block";
+        modalImg.src = img.src;
+
+        // Smooth center zoom-in animation
+        requestAnimationFrame(() => {
           modalImg.style.opacity = "1";
           modalImg.style.transform = "scale(1)";
         });
@@ -336,6 +411,7 @@ Hai kami dari Pipah Cookies sudah beroperasi sejak 2020, Kami menjual produk bak
       }, 300);
     }
   });
+</script>
 </script>  <div class="testimonials">
         <blockquote>“Biskut paling sedap! Anak-anak saya suka sangat!, sekali serang habis” <cite>– Aina</cite></blockquote>
         <blockquote>“Rangup di luar, lembut di dalam. Terbaik!” <cite>– Daniel</cite></blockquote>
