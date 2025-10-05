@@ -884,5 +884,130 @@ btn.addEventListener('click', async () => {
   }
 });
   </script>
+
+  <!-- 🎵 Floating Music & Cart Buttons -->
+<style>
+  /* --- Floating Button Style --- */
+  .floating-btn {
+    position: fixed;
+    z-index: 9999;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    background-color: white;
+  }
+  .floating-btn:hover {
+    transform: scale(1.1);
+  }
+
+  /* 🎵 Music Button - bottom left */
+  #music-btn {
+    bottom: 20px;
+    left: 20px;
+    background: #f8e7ff;
+  }
+  #music-btn.playing {
+    animation: spin 4s linear infinite;
+  }
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  /* 🛒 Cart Button - bottom right */
+  #cart-btn {
+    bottom: 20px;
+    right: 20px;
+    background: #fff3d4;
+  }
+
+  /* 🛒 Floating Cart Sidebar */
+  #cart-sidebar {
+    position: fixed;
+    top: 0;
+    right: -350px;
+    width: 300px;
+    height: 100%;
+    background: #fffaf0;
+    box-shadow: -2px 0 8px rgba(0,0,0,0.3);
+    z-index: 9998;
+    transition: right 0.3s ease;
+    padding: 20px;
+    overflow-y: auto;
+  }
+  #cart-sidebar.active {
+    right: 0;
+  }
+  #cart-sidebar h3 {
+    margin-top: 0;
+    text-align: center;
+    font-weight: bold;
+  }
+  #close-cart {
+    background: #ffbfbf;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 10px;
+    float: right;
+    cursor: pointer;
+  }
+</style>
+
+<!-- 🎵 Music Button -->
+<div id="music-btn" class="floating-btn">
+  🎵
+</div>
+<audio id="bgmusic" loop>
+  <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_9b74d745bb.mp3?filename=soft-piano-relaxing-ambient-10911.mp3" type="audio/mpeg">
+</audio>
+
+<!-- 🛒 Cart Button -->
+<div id="cart-btn" class="floating-btn">
+  🛒
+</div>
+
+<!-- 🛒 Cart Sidebar -->
+<div id="cart-sidebar">
+  <button id="close-cart">Tutup</button>
+  <h3>Troli Anda</h3>
+  <div id="cart-items">Tiada item dalam troli.</div>
+</div>
+
+<script>
+  // 🎵 Music Button Function
+  const musicBtn = document.getElementById('music-btn');
+  const bgmusic = document.getElementById('bgmusic');
+  let isPlaying = false;
+
+  musicBtn.addEventListener('click', () => {
+    if (!isPlaying) {
+      bgmusic.play();
+      musicBtn.classList.add('playing');
+    } else {
+      bgmusic.pause();
+      musicBtn.classList.remove('playing');
+    }
+    isPlaying = !isPlaying;
+  });
+
+  // 🛒 Cart Button Function
+  const cartBtn = document.getElementById('cart-btn');
+  const cartSidebar = document.getElementById('cart-sidebar');
+  const closeCart = document.getElementById('close-cart');
+
+  cartBtn.addEventListener('click', () => {
+    cartSidebar.classList.add('active');
+  });
+
+  closeCart.addEventListener('click', () => {
+    cartSidebar.classList.remove('active');
+  });
+</script>
 </body>
 </html>
