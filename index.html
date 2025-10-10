@@ -352,6 +352,33 @@
         <!-- card 5 -->
         <article class="card product-card">
   <div class="product-slider">
+    <img src="images/rv1.jpg" class="product-img active" alt="rv Cookies (1)">
+    <img src="images/rv2.jpg" class="product-img" alt="rv Cookies (2)">
+    <img src="images/rv3.jpg" class="product-img" alt="rv Cookies (3)">
+    <div class="slider-dots">
+      <span class="dot active"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+    </div>
+  </div>
+
+  <h3>RedVelvet Button </h3>
+  <p><span class="old-price">RM22</span> <span class="price">RM20</span></p>
+
+  <div class="qty-control">
+    <button class="qty-btn" onclick="changeProductQty('p5', -1)">−</button>
+    <input id="qty-p5"  class="qty-input" type="number" readonly value="0" min="0">
+    <button class="qty-btn" onclick="changeProductQty('p5', 1)">+</button>
+  </div>
+
+  <button class="btn primary" onclick="addToCart('p5','RedVelvet Button',20)">
+    Tambah ke Troli
+  </button>
+        </article>
+ <div class="product-grid" id="product-grid">
+        <!-- card 6 -->
+        <article class="card product-card">
+  <div class="product-slider">
     <img src="images/dc1.jpg" class="product-img active" alt="Dc Cookies (1)">
     <img src="images/dc2.jpg" class="product-img" alt="Dc Cookies (2)">
     <img src="images/dc3.jpg" class="product-img" alt="Dc Cookies (3)">
@@ -366,12 +393,12 @@
   <p><span class="old-price">RM22</span> <span class="price">RM19</span></p>
 
   <div class="qty-control">
-    <button class="qty-btn" onclick="changeProductQty('p5', -1)">−</button>
-    <input id="qty-p5"  class="qty-input" type="number" readonly value="0" min="0">
-    <button class="qty-btn" onclick="changeProductQty('p5', 1)">+</button>
+    <button class="qty-btn" onclick="changeProductQty('p6', -1)">−</button>
+    <input id="qty-p6"  class="qty-input" type="number" readonly value="0" min="0">
+    <button class="qty-btn" onclick="changeProductQty('p6', 1)">+</button>
   </div>
 
-  <button class="btn primary" onclick="addToCart('p5','DarkChoc Cookies(70pcs)',19)">
+  <button class="btn primary" onclick="addToCart('p6','DarkChoc Cookies(70pcs)',19)">
     Tambah ke Troli
   </button>
         </article>
